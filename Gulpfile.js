@@ -15,13 +15,16 @@ gulp.task('build', ['clean'], () => gulp
   .pipe(babel())
   .pipe(gulp.dest('lib')));
 
-gulp.task('test', ['build'], () => gulp
-  .src('test/**.js')
-  .pipe(mocha({
-    ui: 'bdd',
-    reporter: 'spec',
-    timeout: typeof v8debug === 'undefined' ? 2000 : Infinity, // NOTE: disable timeouts in debug
-  })));
+gulp.task('test', ['build'], () => {
+  process.env.NODE_ENV = 'test';
+  return gulp
+    .src('test/**.js')
+    .pipe(mocha({
+      ui: 'bdd',
+      reporter: 'spec',
+      timeout: typeof v8debug === 'undefined' ? 2000 : Infinity, // NOTE: disable timeouts in debug
+    }));
+});
 
 gulp.task('preview', ['build'], () => {
   const { buildReporterPlugin } = require('testcafe').embeddingUtils;

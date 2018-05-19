@@ -9,12 +9,16 @@ const dirname = path.dirname(__dirname);
 // default values for config
 const config = {
   fileName: 'report.html',
-  outputPath: dirname,
+  outputPath: '../../',
 };
 
+if (process.env.NODE_ENV === 'test') {
+  config.outputPath = './';
+}
+
 // add values for config from config file tcr-html.config.js
-if (fs.existsSync(`${dirname}/tcr-html.config.js`)) {
-  const newConfig = require(`${dirname}/tcr-html.config.js`);
+if (fs.existsSync(`${dirname}/../../tcr-html.config.js`)) {
+  const newConfig = require(`${dirname}/../../tcr-html.config.js`);
   config.fileName = newConfig.fileName ? newConfig.fileName : config.fileName;
   config.outputPath = newConfig.outputPath ? newConfig.outputPath : config.outputPath;
 }

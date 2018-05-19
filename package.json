@@ -15,7 +15,7 @@
   "license": "MIT",
   "main": "lib/index",
   "scripts": {
-    "test": "gulp test",
+    "test": "NODE_ENV=test gulp build && NODE_ENV=test gulp test",
     "lint": "eslint --fix .",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e $GIT_PARAMS"
