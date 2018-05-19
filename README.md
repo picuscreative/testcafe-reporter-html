@@ -6,7 +6,7 @@ PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML
 
 [<img src="https://img.shields.io/david/picuscreative/testcafe-reporter-html.svg" />](https://david-dm.org/picuscreative/testcafe-reporter-html)
 [<img src="https://img.shields.io/david/dev/picuscreative/testcafe-reporter-html.svg" />](https://david-dm.org/picuscreative/testcafe-reporter-html?type=dev)
-
+[![Build Status](https://travis-ci.org/picuscreative/testcafe-reporter-html.svg?branch=master)](https://travis-ci.org/picuscreative/testcafe-reporter-html)
 
 ## Table of Contents
 
