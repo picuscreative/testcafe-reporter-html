@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-html",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The HTML reporter for TestCafe",
   "keywords": [
     "testcafe",
@@ -13,7 +13,6 @@
   ],
   "author": "PICUS <hello@picus.pt>",
   "license": "MIT",
-  "private": true,
   "main": "lib/index",
   "scripts": {
     "test": "gulp test",
