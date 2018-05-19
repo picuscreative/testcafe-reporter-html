@@ -7,11 +7,14 @@ function makeErrors(errDescrs) {
   return errDescrs.map(descr => new TestRunErrorFormattableAdapter(descr.err, descr.metaInfo));
 }
 
+const startDate = new Date('1970-01-01T00:00:00.000Z');
+const endDate = new Date('1970-01-01T00:15:25.000Z');
+
 module.exports = [
   {
     method: 'reportTaskStart',
     args: [
-      new Date('1970-01-01T00:00:00.000Z'),
+      `${startDate.getUTCDate()}/${startDate.getUTCMonth() + 1}/${startDate.getUTCFullYear()} ${startDate.getUTCHours()}:${startDate.getUTCMinutes()}:${startDate.getUTCSeconds()}`,
       [
         'Chrome 41.0.2227 / Mac OS X 10.10.1',
         'Firefox 47 / Mac OS X 10.10.1',
@@ -161,7 +164,7 @@ module.exports = [
   {
     method: 'reportTaskDone',
     args: [
-      new Date('1970-01-01T00:15:25.000Z'),
+      `${endDate.getUTCDate()}/${endDate.getUTCMonth() + 1}/${endDate.getUTCFullYear()} ${endDate.getUTCHours()}:${endDate.getUTCMinutes()}:${endDate.getUTCSeconds()}`,
       4,
       [
         'Was unable to take a screenshot due to an error.\n\nReferenceError: someVar is not defined',
