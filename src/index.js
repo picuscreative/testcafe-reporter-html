@@ -1,4 +1,23 @@
+/* eslint global-require: 0 */
+/* eslint import/no-dynamic-require: 0 */
+
 const fs = require('fs');
+const path = require('path');
+
+const dirname = path.dirname(__dirname);
+
+// default values for config
+const config = {
+  fileName: 'report.html',
+  outputPath: dirname,
+};
+
+// add values for config from config file tcr-html.config.js
+if (fs.existsSync(`${dirname}/tcr-html.config.js`)) {
+  const newConfig = require(`${dirname}/tcr-html.config.js`);
+  config.fileName = newConfig.fileName ? newConfig.fileName : config.fileName;
+  config.outputPath = newConfig.outputPath ? newConfig.outputPath : config.outputPath;
+}
 
 export default function () {
   return {
@@ -126,7 +145,7 @@ export default function () {
       this.write(html);
 
       try {
-        fs.writeFileSync('dist/report.html', html);
+        fs.writeFileSync(`${config.outputPath}/${config.fileName}`, html);
       } catch (e) {
         console.log('Cannot write file ', e);
       }
