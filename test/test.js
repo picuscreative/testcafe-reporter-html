@@ -15,7 +15,7 @@ it('Should produce report with colors', () => {
 
 it('Should produce report without colors', () => {
   let report = createReport(false);
-  let expected = read('./data/report-without-colors');
+  let expected = read('./data/report-without-colors.html');
 
   report = normalizeNewline(report).trim();
   expected = normalizeNewline(expected).trim();
