@@ -12,6 +12,9 @@
     "html"
   ],
   "author": "PICUS <hello@picus.pt>",
+  "homepage": "https://github.com/picuscreative/testcafe-reporter-html",
+  "bugs": "https://github.com/picuscreative/testcafe-reporter-html/issues",
+  "repository": "git@github.com:picuscreative/testcafe-reporter-html.git",
   "license": "MIT",
   "main": "lib/index",
   "scripts": {
@@ -19,6 +22,11 @@
     "lint": "eslint --fix .",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e $GIT_PARAMS"
+  },
+  "standard-version": {
+    "scripts": {
+      "posttag": "git push --follow-tags origin master && npm publish"
+    }
   },
   "lint-staged": {
     "*.js": [
