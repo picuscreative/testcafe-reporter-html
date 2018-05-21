@@ -19,13 +19,13 @@ PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML
 ### 1. Install package
 
 ```sh
-$ npm install test-reporter-html
+$ npm install testcafe-reporter-html
 ```
 
 ### 2. Configure
 
-If no configuration is specified the report file is called `report.html` in the current project's path.
-A configuration file `tcr-html.config.js` can be used to specify any of those values:
+If no configuration is specified, the generated file will be called `report.html` and found in the project's root path.
+A configuration file `tcr-html.config.js` can be used to specify any value:
 
 ```js
 // tcr-html.config.js
