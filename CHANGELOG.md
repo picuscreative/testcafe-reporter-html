@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.1.3...v1.2.0) (2018-08-12)
+
+
+### Bug Fixes
+
+* remove useless test count column ([8460bcd](https://github.com/picuscreative/testcafe-reporter-html/commit/8460bcd))
+
+
+### Features
+
+* add link to error details ([52587cf](https://github.com/picuscreative/testcafe-reporter-html/commit/52587cf))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.1.2...v1.1.3) (2018-05-21)
 
