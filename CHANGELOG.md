@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.2.0...v1.3.0) (2018-08-16)
+
+
+### Features
+
+* add sorting ([06e148a](https://github.com/picuscreative/testcafe-reporter-html/commit/06e148a))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.1.3...v1.2.0) (2018-08-12)
 
