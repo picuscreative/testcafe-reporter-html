@@ -17,6 +17,9 @@
   "repository": "git@github.com:picuscreative/testcafe-reporter-html.git",
   "license": "MIT",
   "main": "lib/index",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "NODE_ENV=test gulp build && NODE_ENV=test gulp test",
     "lint": "eslint --fix .",
