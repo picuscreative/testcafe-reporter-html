@@ -92,15 +92,7 @@ export default function () {
       // Result
       this.tableReports += this.indentString('<td>', 2);
       if (testRunInfo.skipped) { this.tableReports += 'skipped'; } else { this.tableReports += result; }
-      this.tableReports += '</td>\n';
-      // Screenshot
-      this.tableReports += this.indentString('<td>', 2);
-      if (testRunInfo.screenshots.length > 0 && testRunInfo.screenshots[0].takenOnFail) {
-        const screenshot = testRunInfo.screenshots[0];
-        const thumbnailPath = path.relative(config.outputPath, screenshot.thumbnailPath);
-        const screenshotPath = path.relative(config.outputPath, screenshot.screenshotPath);
-        this.tableReports += `<a href="${screenshotPath}"><img src="${thumbnailPath}"/></a>`;
-      }
+
       this.tableReports += '</td>\n';
 
       this.tableReports += this.indentString('</tr>\n');
@@ -142,7 +134,6 @@ export default function () {
       html += '<th>Test Count</th>';
       html += '<th>Duration</th>';
       html += '<th>Result</th>';
-      html += '<th>Screenshot</th>';
       html += '</tr>';
       html += this.tableReports;
       html += '</table>';
