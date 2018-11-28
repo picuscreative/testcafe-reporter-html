@@ -14,14 +14,14 @@ module.exports = function createReport(withColors) {
     },
   };
 
-  const plugin = buildReporterPlugin(pluginFactory, outStream);
+  const plugin = buildReporterPlugin(pluginFactory.default, outStream);
 
   plugin.chalk.enabled = !plugin.noColors && withColors;
   plugin.symbols = { ok: '✓', err: '✖' };
 
   // NOTE: disable errors coloring if we don't have custom
   // error decorator. Default error colors may be prone to changing.
-  if (plugin.chalk.enabled && !pluginFactory().createErrorDecorator) {
+  if (plugin.chalk.enabled && !pluginFactory.default().createErrorDecorator) {
     const origFormatError = plugin.formatError;
 
     plugin.formatError = () => {
