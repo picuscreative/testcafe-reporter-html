@@ -32,7 +32,7 @@ gulp.task('preview', () => {
   const { buildReporterPlugin } = require('testcafe').embeddingUtils;
   const pluginFactory = require('./lib');
   const reporterTestCalls = require('./test/utils/reporter-test-calls');
-  const plugin = buildReporterPlugin(pluginFactory.default);
+  const plugin = buildReporterPlugin(pluginFactory);
 
   reporterTestCalls.forEach((call) => {
     plugin[call.method](...call.args);

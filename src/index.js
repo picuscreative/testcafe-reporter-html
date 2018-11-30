@@ -23,109 +23,108 @@ if (fs.existsSync(`${dirname}/../../tcr-html.config.js`)) {
   config.outputPath = newConfig.outputPath ? newConfig.outputPath : config.outputPath;
 }
 
-export default function () {
-  return {
-    noColors: true,
-    startTime: null,
-    afterErrList: false,
-    uaList: null,
-    report: '',
-    table: '',
-    tableReports: '',
-    testCount: 0,
-    skipped: 0,
-    currentTestNumber: 1,
+module.exports = () => ({
+  noColors: true,
+  startTime: null,
+  afterErrList: false,
+  uaList: null,
+  report: '',
+  table: '',
+  tableReports: '',
+  testCount: 0,
+  skipped: 0,
+  currentTestNumber: 1,
 
-    reportTaskStart: function reportTaskStart(startTime, userAgents, testCount) {
-      this.startTime = startTime;
-      this.uaList = userAgents.join(', ');
-      this.testCount = testCount;
-    },
+  reportTaskStart: function reportTaskStart(startTime, userAgents, testCount) {
+    this.startTime = startTime;
+    this.uaList = userAgents.join(', ');
+    this.testCount = testCount;
+  },
 
-    reportFixtureStart: function reportFixtureStart(name) {
-      this.currentFixtureName = name;
-    },
+  reportFixtureStart: function reportFixtureStart(name) {
+    this.currentFixtureName = name;
+  },
 
-    reportTestDone: function reportTestDone(name, testRunInfo) {
-      const hasErr = !!testRunInfo.errs.length;
-      const result = hasErr ? 'failed' : 'passed';
+  reportTestDone: function reportTestDone(name, testRunInfo) {
+    const hasErr = !!testRunInfo.errs.length;
+    const result = hasErr ? 'failed' : 'passed';
 
-      if (testRunInfo.skipped) {
-        this.skipped += 1;
-      }
+    if (testRunInfo.skipped) {
+      this.skipped += 1;
+    }
 
-      this.compileTestTable(name, testRunInfo, hasErr, result);
-      if (hasErr) {
-        this.compileErrors(name, testRunInfo);
-      }
+    this.compileTestTable(name, testRunInfo, hasErr, result);
+    if (hasErr) {
+      this.compileErrors(name, testRunInfo);
+    }
 
-      this.currentTestNumber += 1;
-    },
+    this.currentTestNumber += 1;
+  },
 
-    compileErrors: function compileErrors(name, testRunInfo) {
-      const heading = `${this.currentTestNumber}. ${this.currentFixtureName} - ${name}`;
+  compileErrors: function compileErrors(name, testRunInfo) {
+    const heading = `${this.currentTestNumber}. ${this.currentFixtureName} - ${name}`;
 
-      this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}">${heading}</h4>\n`);
-      testRunInfo.errs.forEach((error) => {
-        this.report += this.indentString('<pre>');
-        this.report += this.formatError(error, '');
-        this.report += this.indentString('</pre>');
-      });
-    },
+    this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}">${heading}</h4>\n`);
+    testRunInfo.errs.forEach((error) => {
+      this.report += this.indentString('<pre>');
+      this.report += this.formatError(error, '');
+      this.report += this.indentString('</pre>');
+    });
+  },
 
-    compileTestTable: function compileTestTable(name, testRunInfo, hasErr, result) {
-      if (hasErr) {
-        this.tableReports += this.indentString('<tr class="danger">\n');
-      } else if (testRunInfo.skipped) {
-        this.tableReports += this.indentString('<tr class="warning">\n');
-      } else {
-        this.tableReports += this.indentString('<tr class="success">\n');
-      }
+  compileTestTable: function compileTestTable(name, testRunInfo, hasErr, result) {
+    if (hasErr) {
+      this.tableReports += this.indentString('<tr class="danger">\n');
+    } else if (testRunInfo.skipped) {
+      this.tableReports += this.indentString('<tr class="warning">\n');
+    } else {
+      this.tableReports += this.indentString('<tr class="success">\n');
+    }
 
-      // Number
-      this.tableReports += this.indentString('<td>', 2);
-      this.tableReports += this.currentTestNumber;
-      this.tableReports += '</td>\n';
+    // Number
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.currentTestNumber;
+    this.tableReports += '</td>\n';
 
-      // Fixture
-      this.tableReports += this.indentString('<td>', 2);
-      this.tableReports += this.currentFixtureName;
-      this.tableReports += '</td>\n';
-      // Test
-      this.tableReports += this.indentString('<td>', 2);
-      this.tableReports += name;
-      this.tableReports += '</td>\n';
-      // Browsers
-      this.tableReports += this.indentString('<td>', 2);
-      this.tableReports += this.uaList;
-      this.tableReports += '</td>\n';
+    // Fixture
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.currentFixtureName;
+    this.tableReports += '</td>\n';
+    // Test
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += name;
+    this.tableReports += '</td>\n';
+    // Browsers
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.uaList;
+    this.tableReports += '</td>\n';
 
-      // Duration
-      this.tableReports += this.indentString('<td>', 2);
-      this.tableReports += this.moment.duration(testRunInfo.durationMs).format('h[h] mm[m] ss[s]');
-      this.tableReports += '</td>\n';
-      // Result
-      this.tableReports += this.indentString('<td>', 2);
-      if (testRunInfo.skipped) {
-        this.tableReports += 'skipped';
-      } else if (result === 'failed') {
-        this.tableReports += `<a href="#test-${this.currentTestNumber}">failed</a>`;
-      } else {
-        this.tableReports += result;
-      }
+    // Duration
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.moment.duration(testRunInfo.durationMs).format('h[h] mm[m] ss[s]');
+    this.tableReports += '</td>\n';
+    // Result
+    this.tableReports += this.indentString('<td>', 2);
+    if (testRunInfo.skipped) {
+      this.tableReports += 'skipped';
+    } else if (result === 'failed') {
+      this.tableReports += `<a href="#test-${this.currentTestNumber}">failed</a>`;
+    } else {
+      this.tableReports += result;
+    }
 
-      this.tableReports += '</td>\n';
+    this.tableReports += '</td>\n';
 
-      this.tableReports += this.indentString('</tr>\n');
-    },
+    this.tableReports += this.indentString('</tr>\n');
+  },
 
-    reportTaskDone: function reportTaskDone(endTime, passed /* , warnings */) {
-      const durationMs = endTime - this.startTime;
-      const durationStr = this.moment.duration(durationMs).format('h[h] mm[m] ss[s]');
-      const failed = this.testCount - passed;
+  reportTaskDone: function reportTaskDone(endTime, passed /* , warnings */) {
+    const durationMs = endTime - this.startTime;
+    const durationStr = this.moment.duration(durationMs).format('h[h] mm[m] ss[s]');
+    const failed = this.testCount - passed;
 
-      // Opening html
-      let html = `
+    // Opening html
+    let html = `
       <html lang="en">
         <head>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -143,8 +142,8 @@ export default function () {
           <div class="container">
       `;
 
-      // Now add a summary
-      html += `
+    // Now add a summary
+    html += `
             <h1 class="text-primary">TestCafe Test Summary</h1>
             <br>
             <div class="client-logo" style="padding:15px"></div>
@@ -158,8 +157,8 @@ export default function () {
             </div><br>
       `;
 
-      // Summary table
-      html += `
+    // Summary table
+    html += `
             <table class="table sortable">
               <thead>
                 <tr>
@@ -178,27 +177,26 @@ export default function () {
             <br><br>
       `;
 
-      // Error details
-      html += `
+    // Error details
+    html += `
             <h3>Error Details</h3>
             <br>
             ${this.report}
       `;
 
-      // closing html
-      html += `
+    // closing html
+    html += `
           </div>
         </body>
       </html>
       `;
 
-      this.write(html);
+    this.write(html);
 
-      try {
-        fs.writeFileSync(`${config.outputPath}/${config.fileName}`, html);
-      } catch (e) {
-        console.log('Cannot write file ', e);
-      }
-    },
-  };
-}
+    try {
+      fs.writeFileSync(`${config.outputPath}/${config.fileName}`, html);
+    } catch (e) {
+      console.log('Cannot write file ', e);
+    }
+  },
+});
