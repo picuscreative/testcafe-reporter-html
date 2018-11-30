@@ -13,7 +13,6 @@ PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML
 - [Installation and setup](#installation-and-setup)
 - [Contributing](#installation-and-setup)
 
-
 ## Installation and setup
 
 ### 1. Install package
@@ -30,8 +29,8 @@ A configuration file `tcr-html.config.js` can be used to specify any value:
 ```js
 // tcr-html.config.js
 module.exports = {
-  fileName: 'test.html',
-  outputPath: 'public',
+  fileName: "test.html",
+  outputPath: "public",
 };
 ```
 

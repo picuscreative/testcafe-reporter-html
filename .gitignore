@@ -1,4 +1,6 @@
-dist
 node_modules
 report.html
 !test/data/*.html
+.idea
+*.tgz
+.vscode
