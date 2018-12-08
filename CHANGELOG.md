@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.3.0...v1.4.0) (2018-12-08)
+
+
+### Bug Fixes
+
+* add README after being deleted ([078584a](https://github.com/picuscreative/testcafe-reporter-html/commit/078584a))
+* removed lib folder ([2f6ae81](https://github.com/picuscreative/testcafe-reporter-html/commit/2f6ae81))
+* use commonjs to export plugin ([7ef7076](https://github.com/picuscreative/testcafe-reporter-html/commit/7ef7076))
+
+
+### Features
+
+* added screenshots if set ([c18b504](https://github.com/picuscreative/testcafe-reporter-html/commit/c18b504))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.2.0...v1.3.0) (2018-08-16)
 
