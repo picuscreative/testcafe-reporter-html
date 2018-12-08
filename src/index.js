@@ -64,7 +64,13 @@ module.exports = () => ({
   compileErrors: function compileErrors(name, testRunInfo) {
     const heading = `${this.currentTestNumber}. ${this.currentFixtureName} - ${name}`;
 
-    this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}">${heading}</h4>\n`);
+    this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}">${heading}`);
+    if (testRunInfo.screenshots) {
+      testRunInfo.screenshots.forEach((screenshot) => {
+        this.report += `&nbsp;&nbsp;<img id="thumbImg" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
+      });
+    }
+    this.report += '</h4>\n';
     testRunInfo.errs.forEach((error) => {
       this.report += this.indentString('<pre>');
       this.report += this.formatError(error, '');
@@ -137,8 +143,61 @@ module.exports = () => ({
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/bootstrap-sortable.js"></script>
           <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/moment.min.js"></script>
+          <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+
+            #thumbImg {
+              width: 100%;
+              max-width: 35px;
+              border-radius: 3px;
+              cursor: pointer;
+              margin-bottom: 5px;
+              border-width: 1px;
+              border-color: #f1f1f1;
+              border-style: solid;
+            }
+
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgba(0,0,0,0.7);
+            }
+
+            .modal-content {
+              margin: auto;
+              display: block;
+              width: 80%;
+              max-width: 700px;
+            }
+
+            .closeModal {
+              position: absolute;
+              top: 15px;
+              right: 35px;
+              color: #f1f1f1;
+              font-size: 40px;
+              font-weight: bold;
+              transition: 0.3s;
+            }
+
+            .closeModal:hover,
+            .closeModal:focus {
+              cursor: pointer;
+            }
+          </style>
         </head>
         <body>
+          <div id="myModal" class="modal">
+            <span class="closeModal">&times;</span>
+            <img class="modal-content" id="img01">
+          </div>
           <div class="container">
       `;
 
@@ -187,6 +246,18 @@ module.exports = () => ({
     // closing html
     html += `
           </div>
+          <script>
+            var modal = document.getElementById('myModal');
+
+            document.getElementById('thumbImg').onclick = function(){
+              modal.style.display = "block";
+              document.getElementById("img01").src = this.src;
+            }
+
+            document.getElementsByClassName("closeModal")[0].onclick = function() {
+              modal.style.display = "none";
+            }
+          </script>
         </body>
       </html>
       `;
