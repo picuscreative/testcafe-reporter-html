@@ -21,23 +21,17 @@ PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML
 $ npm install testcafe-reporter-html
 ```
 
-### 2. Configure
-
-If no configuration is specified, the generated file will be called `report.html` and found in the project's root path.
-A configuration file `tcr-html.config.js` can be used to specify any value:
-
-```js
-// tcr-html.config.js
-module.exports = {
-  fileName: "test.html",
-  outputPath: "public",
-};
-```
-
-### 3. Add the reporter flag to your test task runner
+### 2. Add the reporter flag to your test task runner
 
 ```sh
 $ testcafe chrome test_folder/ --reporter html
+```
+
+### 3. Configure the output file
+
+By default the html is written to `stdout`. To write the html to a file use the TestCafe build-in method:
+```sh
+$ testcafe chrome test_folder/ --reporter html:path/to/my/file.html
 ```
 
 ## Contributing
