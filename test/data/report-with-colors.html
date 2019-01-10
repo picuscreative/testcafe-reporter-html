@@ -1,98 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Contents/bootstrap-sortable.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/bootstrap-sortable.js"></script>
+    <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/moment.min.js"></script>
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
 
-      <html lang="en">
-        <head>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-          <link rel="stylesheet" href="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Contents/bootstrap-sortable.css">
-          <script
-                  src="https://code.jquery.com/jquery-3.3.1.min.js"
-                  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                  crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-          <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/bootstrap-sortable.js"></script>
-          <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/moment.min.js"></script>
-          <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
+      .thumbImg {
+        width: 100%;
+        max-width: 35px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        border-width: 1px;
+        border-color: #f1f1f1;
+        border-style: solid;
+      }
 
-            #thumbImg {
-              width: 100%;
-              max-width: 35px;
-              border-radius: 3px;
-              cursor: pointer;
-              margin-bottom: 5px;
-              border-width: 1px;
-              border-color: #f1f1f1;
-              border-style: solid;
-            }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+      }
 
-            .modal {
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgba(0,0,0,0.7);
-            }
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
 
-            .modal-content {
-              margin: auto;
-              display: block;
-              width: 80%;
-              max-width: 700px;
-            }
+      .closeModal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
 
-            .closeModal {
-              position: absolute;
-              top: 15px;
-              right: 35px;
-              color: #f1f1f1;
-              font-size: 40px;
-              font-weight: bold;
-              transition: 0.3s;
-            }
+      .closeModal:hover,
+      .closeModal:focus {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+      <span class="closeModal">&times;</span>
+      <img class="modal-content" id="modelImage">
+    </div>
+    <div class="container">
 
-            .closeModal:hover,
-            .closeModal:focus {
-              cursor: pointer;
-            }
-          </style>
-        </head>
-        <body>
-          <div id="myModal" class="modal">
-            <span class="closeModal">&times;</span>
-            <img class="modal-content" id="img01">
-          </div>
-          <div class="container">
-      
-            <h1 class="text-primary">TestCafe Test Summary</h1>
-            <br>
-            <div class="client-logo" style="padding:15px"></div>
-            <div class="bg-primary" style="padding:15px">
-              <h3>Summary</h3><br>
-              <p class="lead">Start Time: 1/1/1970 0:0:0</p>
-              <p class="lead">Browsers: Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</p>
-              <p class="lead">Duration: 0s</p>
-              <p class="lead">Tests Failed: 2 out of 6</p>
-              <p class="lead">Tests Skipped: 0</p>
-            </div><br>
-      
-            <table class="table sortable">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Fixture</th>
-                  <th>Test Name</th>
-                  <th>Browsers</th>
-                  <th>Duration</th>
-                  <th>Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="success">
+      <h1 class="text-primary">TestCafe Test Summary</h1>
+      <br>
+      <div class="client-logo" style="padding:15px"></div>
+      <div class="bg-primary" style="padding:15px">
+        <h3>Summary</h3><br>
+        <p class="lead">Start Time: 1/1/1970 0:0:0</p>
+        <p class="lead">Browsers: Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</p>
+        <p class="lead">Duration: 0s</p>
+        <p class="lead">Tests Failed: 2 out of 6</p>
+        <p class="lead">Tests Skipped: 0</p>
+      </div><br>
+      <table class="table sortable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fixture</th>
+            <th>Test Name</th>
+            <th>Browsers</th>
+            <th>Duration</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+           <tr class="success">
   <td>1</td>
   <td>First fixture</td>
   <td>First test in first fixture</td>
@@ -149,14 +148,14 @@
   <td><a href="#test-7">failed</a></td>
  </tr>
 
-              </tbody>
-            </table>
-            <br><br>
+        </tbody>
+      </table>
+      <br><br>
       
-            <h3>Error Details</h3>
-            <br>
-             <h4 id="test-2">2. First fixture - Second test in first fixture</h4>
- <pre>undefinedError on page "http://example.org":
+      <h3>Error Details</h3>
+      <br>
+       <h4 id="test-2">2. First fixture - Second test in first fixture</h4>
+ <pre>undefinedError on page &quot;http://example.org&quot;:
 
 Some error
 
@@ -167,19 +166,21 @@ Browser: Firefox 47 / Mac OS X 10.10.1 </pre> <h4 id="test-7">7. Third fixture -
  <pre>undefinedThe specified selector does not match any element in the DOM tree.
 
 Browser: Firefox 47 / Mac OS X 10.10.1 </pre>
+    </div>
+    <script>
+      const modal = document.getElementById('myModal');
+      const modalImage = document.getElementById("modelImage");
+
+      Array.from(document.getElementsByClassName("thumbImg")).forEach(function(el) {
+        el.onclick = function() {
+          modal.style.display = "block";
+          modalImage.src = this.src;
+        }
+      });
       
-          </div>
-          <script>
-            var modal = document.getElementById('myModal');
-
-            document.getElementById('thumbImg').onclick = function(){
-              modal.style.display = "block";
-              document.getElementById("img01").src = this.src;
-            }
-
-            document.getElementsByClassName("closeModal")[0].onclick = function() {
-              modal.style.display = "none";
-            }
-          </script>
-        </body>
-      </html>
+      document.getElementsByClassName("closeModal")[0].onclick = function() {
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
