@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.4.1...v1.4.2) (2019-01-12)
+
+
+### Bug Fixes
+
+* screenshots multiple failed tests, escaped html in error code ([428812e](https://github.com/picuscreative/testcafe-reporter-html/commit/428812e))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.4.0...v1.4.1) (2018-12-22)
 
