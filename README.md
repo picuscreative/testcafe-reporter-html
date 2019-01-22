@@ -2,11 +2,13 @@
 
 # testcafe-reporter-html
 
-PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML report of a TestCafe task(s) execution, as well as feedback on the errors, if these occurred.
+PICUS' HTML reporter generator for TestCafe automated tests. It provides an HTML report of a TestCafe task(s) execution, as well as feedback on the errors, if these occurred. Also it provides an easy way to view the screenshots from failing tests.
 
 [<img src="https://img.shields.io/david/picuscreative/testcafe-reporter-html.svg" />](https://david-dm.org/picuscreative/testcafe-reporter-html)
 [<img src="https://img.shields.io/david/dev/picuscreative/testcafe-reporter-html.svg" />](https://david-dm.org/picuscreative/testcafe-reporter-html?type=dev)
 [![Build Status](https://travis-ci.org/picuscreative/testcafe-reporter-html.svg?branch=master)](https://travis-ci.org/picuscreative/testcafe-reporter-html)
+
+![Testcafé Reporter HTML](./testcafe-reporter-html.gif "Testcafé Reporter HTML")
 
 ## Table of Contents
 
@@ -30,6 +32,7 @@ $ testcafe chrome test_folder/ --reporter html
 ### 3. Configure the output file
 
 By default the html is written to `stdout`. To write the html to a file use the TestCafe build-in method:
+
 ```sh
 $ testcafe chrome test_folder/ --reporter html:path/to/my/file.html
 ```
