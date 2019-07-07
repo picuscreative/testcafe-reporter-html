@@ -59,7 +59,7 @@ module.exports = [
             },
           },
           {
-            err: new ActionElementNotFoundError(),
+            err: new ActionElementNotFoundError({ apiFnChain: [] }),
 
             metaInfo: {
               userAgent: 'Firefox 47 / Mac OS X 10.10.1',
@@ -145,7 +145,7 @@ module.exports = [
       {
         errs: makeErrors([
           {
-            err: new ActionElementNotFoundError(),
+            err: new ActionElementNotFoundError({ apiFnChain: [] }),
 
             metaInfo: {
               userAgent: 'Firefox 47 / Mac OS X 10.10.1',
@@ -169,9 +169,9 @@ module.exports = [
       [
         'Was unable to take a screenshot due to an error.\n\nReferenceError: someVar is not defined',
         'Was unable to take a screenshot due to an error.\n\nReferenceError: someOtherVar is not defined',
-        'Was unable to take screenshots because the screenshot directory is not specified. ' +
-                'To specify it, use the "-s" or "--screenshots" command line option or the ' +
-                '"screenshots" method of the test runner in case you are using API.',
+        'Was unable to take screenshots because the screenshot directory is not specified. '
+                + 'To specify it, use the "-s" or "--screenshots" command line option or the '
+                + '"screenshots" method of the test runner in case you are using API.',
       ],
     ],
   },
