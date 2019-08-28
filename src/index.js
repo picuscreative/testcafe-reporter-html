@@ -25,7 +25,7 @@ module.exports = () => ({
     this.currentFixtureName = name;
   },
 
-  reportTestDone: function reportTestDone(name, testRunInfo) {
+  reportTestDone: function reportTestDone(name, testRunInfo, meta = {}) {
     const hasErr = !!testRunInfo.errs.length;
     const result = hasErr ? 'failed' : 'passed';
 
@@ -33,7 +33,7 @@ module.exports = () => ({
       this.skipped += 1;
     }
 
-    this.compileTestTable(name, testRunInfo, hasErr, result);
+    this.compileTestTable(name, testRunInfo, hasErr, result, meta);
     if (hasErr) {
       this.compileErrors(name, testRunInfo);
     }
@@ -58,7 +58,7 @@ module.exports = () => ({
     });
   },
 
-  compileTestTable: function compileTestTable(name, testRunInfo, hasErr, result) {
+  compileTestTable: function compileTestTable(name, testRunInfo, hasErr, result, meta = {}) {
     if (hasErr) {
       this.tableReports += this.indentString('<tr class="danger">\n');
     } else if (testRunInfo.skipped) {
@@ -80,15 +80,35 @@ module.exports = () => ({
     this.tableReports += this.indentString('<td>', 2);
     this.tableReports += name;
     this.tableReports += '</td>\n';
+    /*
     // Browsers
     this.tableReports += this.indentString('<td>', 2);
     this.tableReports += this.uaList;
     this.tableReports += '</td>\n';
-
+    */
     // Duration
     this.tableReports += this.indentString('<td>', 2);
     this.tableReports += this.moment.duration(testRunInfo.durationMs).format('h[h] mm[m] ss[s]');
     this.tableReports += '</td>\n';
+
+    // Expected result
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += meta['Expected-Result'];
+    this.tableReports += '</td>\n';
+
+    // Actual Result
+    const errorMessage = (testRunInfo.errs && testRunInfo.errs[0] && testRunInfo.errs[0].errMsg) || 'Error';
+    const errorMessageToShow = errorMessage.split(': expected ')[0];// @Todo get this out of here
+
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += result === 'passed' ? meta['Actual-Result'] || meta['Expected-Result'] : errorMessageToShow;
+    this.tableReports += '</td>\n';
+
+    // Test data
+    this.tableReports += this.indentString('<td style="width: 151px; word-break: break-word;">', 2);
+    this.tableReports += meta['Test-Data'] ? JSON.stringify(meta['Test-Data']) : 'None';
+    this.tableReports += '</td>\n';
+
     // Result
     this.tableReports += this.indentString('<td>', 2);
     if (testRunInfo.skipped) {
@@ -202,10 +222,13 @@ module.exports = () => ({
         <thead>
           <tr>
             <th>#</th>
-            <th>Fixture</th>
-            <th>Test Name</th>
-            <th>Browsers</th>
+            <th>Test Case</th>
+            <th>Steps</th>
+            <!--<th>Browsers</th>-->
             <th>Duration</th>
+            <th>Expected Result</th>
+            <th>Actual Result</th>
+            <th style="width: 151px; word-break: break-word;">Test data</th>
             <th>Result</th>
           </tr>
         </thead>
@@ -235,7 +258,7 @@ module.exports = () => ({
           modalImage.src = this.src;
         }
       });
-      
+
       document.getElementsByClassName("closeModal")[0].onclick = function() {
         modal.style.display = "none";
       }
