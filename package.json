@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-html-custom",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "The HTML reporter for TestCafe (with customizations)",
   "keywords": [
     "testcafe",
