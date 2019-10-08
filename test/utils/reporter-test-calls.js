@@ -4,7 +4,7 @@ const { ActionElementNotFoundError } = require('testcafe').embeddingUtils.testRu
 const testCallsite = require('./test-callsite');
 
 function makeErrors(errDescrs) {
-  return errDescrs.map(descr => new TestRunErrorFormattableAdapter(descr.err, descr.metaInfo));
+  return errDescrs.map((descr) => new TestRunErrorFormattableAdapter(descr.err, descr.metaInfo));
 }
 
 const startDate = new Date('1970-01-01T00:00:00.000Z');
@@ -59,7 +59,7 @@ module.exports = [
             },
           },
           {
-            err: new ActionElementNotFoundError(),
+            err: new ActionElementNotFoundError({ apiFnChain: [] }),
 
             metaInfo: {
               userAgent: 'Firefox 47 / Mac OS X 10.10.1',
@@ -145,7 +145,7 @@ module.exports = [
       {
         errs: makeErrors([
           {
-            err: new ActionElementNotFoundError(),
+            err: new ActionElementNotFoundError({ apiFnChain: [] }),
 
             metaInfo: {
               userAgent: 'Firefox 47 / Mac OS X 10.10.1',
@@ -167,11 +167,9 @@ module.exports = [
       `${endDate.getUTCDate()}/${endDate.getUTCMonth() + 1}/${endDate.getUTCFullYear()} ${endDate.getUTCHours()}:${endDate.getUTCMinutes()}:${endDate.getUTCSeconds()}`,
       4,
       [
-        'Was unable to take a screenshot due to an error.\n\nReferenceError: someVar is not defined',
-        'Was unable to take a screenshot due to an error.\n\nReferenceError: someOtherVar is not defined',
-        'Was unable to take screenshots because the screenshot directory is not specified. ' +
-                'To specify it, use the "-s" or "--screenshots" command line option or the ' +
-                '"screenshots" method of the test runner in case you are using API.',
+        'Was unable to take screenshots because the screenshot directory is not specified. '
+          + 'To specify it, use the "-s" or "--screenshots" command line option or the '
+          + '"screenshots" method of the test runner in case you are using API.',
       ],
     ],
   },
