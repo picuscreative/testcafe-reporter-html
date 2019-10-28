@@ -41,15 +41,15 @@
   },
   "dependencies": {
     "callsite-record": "^4.1.3",
-    "cross-env": "^5.0.1",
-    "del": "^3.0.0",
+    "cross-env": "^6.0.1",
+    "del": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-mocha": "^6.0.0",
     "normalize-newline": "^3.0.0",
     "read-file-relative": "^1.2.0",
-    "testcafe": "^0.20.0"
+    "testcafe": "^1.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
