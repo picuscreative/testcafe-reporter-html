@@ -6,16 +6,16 @@ const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const del = require('del');
 
-gulp.task('clean', cb => del('lib', cb));
+gulp.task('clean', (cb) => del('lib', cb));
 
-gulp.task('build', ['clean'], () => gulp
+gulp.task('build', gulp.series(['clean'], () => gulp
   .src('src/**/*.js')
   .pipe(
     babel({
       presets: ['@babel/env'],
     }),
   )
-  .pipe(gulp.dest('lib')));
+  .pipe(gulp.dest('lib'))));
 
 gulp.task('test', () => {
   process.env.NODE_ENV = 'test';
