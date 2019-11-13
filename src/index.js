@@ -210,7 +210,7 @@ module.exports = () => ({
 
     // Now add a summary
     html += `
-      <h3 class="text-primary">TestCafe Test Summary |</h3>
+      <h3 class="text-primary">TestCafe Test Summary</h3>
       <a style=\"font-size:15px\" href=index.html>Switch to Dashboard View</a>
       <br>
       <div class="client-logo" style="padding:15px"></div>
