@@ -91,6 +91,10 @@ module.exports = () => ({
     this.tableReports += this.moment.duration(testRunInfo.durationMs).format('h[h] mm[m] ss[s]');
     this.tableReports += '</td>\n';
 
+    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += meta['Test-Action'];
+    this.tableReports += '</td>\n'; // Test Action
+
     // Expected result
     this.tableReports += this.indentString('<td>', 2);
     this.tableReports += meta['Expected-Result'];
@@ -233,6 +237,7 @@ module.exports = () => ({
             <th>Steps</th>
             <!--<th>Browsers</th>-->
             <th>Duration</th>
+            <th>Test Action</th>
             <th>Expected Result</th>
             <th>Actual Result</th>
             <th style="width: 151px; word-break: break-word;">Test data</th>
