@@ -44,7 +44,7 @@ module.exports = () => ({
   compileErrors: function compileErrors(name, testRunInfo) {
     const heading = `${this.currentTestNumber}. ${this.currentFixtureName} - ${name}`;
 
-    this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}">${heading}`);
+    this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}" style="color: red;">${heading}`);
     if (testRunInfo.screenshots) {
       testRunInfo.screenshots.forEach((screenshot) => {
         this.report += `&nbsp;&nbsp;<img class="thumbImg" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
@@ -52,7 +52,7 @@ module.exports = () => ({
     }
     this.report += '</h4>\n';
     testRunInfo.errs.forEach((error) => {
-      this.report += this.indentString('<pre>');
+      this.report += this.indentString('<pre style="box-shadow: 0px 0px 6px 5px #00000017 inset;">');
       this.report += this.escapeHtml(this.formatError(error, '')).replace('{', '&#123').replace('}', '&#125');
       this.report += this.indentString('</pre>');
     });
@@ -185,9 +185,8 @@ module.exports = () => ({
     // Now add a summary
     html += `
       <h1 class="text-primary">TestCafe Test Summary</h1>
-      <br>
       <div class="client-logo" style="padding:15px"></div>
-      <div class="bg-primary" style="padding:15px">
+      <div class="bg-primary" style="padding:15px;box-shadow: 10px 10px 10px 10px #00000033;border-radius: 10px;"">
         <h3>Summary</h3><br>
         <p class="lead">Start Time: ${this.startTime}</p>
         <p class="lead">Browsers: ${this.uaList}</p>
@@ -198,7 +197,9 @@ module.exports = () => ({
 
     // Summary table
     html += `
-      <table class="table sortable">
+      <table class="table sortable" <table class="table sortable" style="
+    box-shadow: 10px 10px 10px 10px #00000070;
+    border-radius: 20px;">
         <thead>
           <tr>
             <th>#</th>
@@ -212,14 +213,23 @@ module.exports = () => ({
         <tbody>
           ${this.tableReports}
         </tbody>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
       </table>
-      <br><br>
+      <br>
       `;
 
     // Error details
     html += `
       <h3>Error Details</h3>
-      <br>
       ${this.report}`;
 
     // closing html
@@ -235,12 +245,13 @@ module.exports = () => ({
           modalImage.src = this.src;
         }
       });
-      
+
       document.getElementsByClassName("closeModal")[0].onclick = function() {
         modal.style.display = "none";
       }
     </script>
   </body>
+  <br>
 </html>`;
 
     this.write(html);
