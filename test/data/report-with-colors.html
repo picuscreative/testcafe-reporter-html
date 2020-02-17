@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Contents/bootstrap-sortable.css">
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/bootstrap-sortable.js"></script>
     <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/moment.min.js"></script>
@@ -62,17 +57,16 @@
       }
     </style>
   </head>
-  <body>
+  <body data-gr-c-s-loaded="true">
     <div id="myModal" class="modal">
-      <span class="closeModal">&times;</span>
+      <span class="closeModal">×</span>
       <img class="modal-content" id="modelImage">
     </div>
     <div class="container">
 
       <h1 class="text-primary">TestCafe Test Summary</h1>
-      <br>
       <div class="client-logo" style="padding:15px"></div>
-      <div class="bg-primary" style="padding:15px">
+      <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <h3>Summary</h3><br>
         <p class="lead">Start Time: 1/1/1970 0:0:0</p>
         <p class="lead">Browsers: Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</p>
@@ -80,96 +74,96 @@
         <p class="lead">Tests Failed: 2 out of 6</p>
         <p class="lead">Tests Skipped: 0</p>
       </div><br>
-      <table class="table sortable">
+      <table class="table sortable" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Fixture</th>
-            <th>Test Name</th>
-            <th>Browsers</th>
-            <th>Duration</th>
-            <th>Result</th>
+            <th class="nosort" data-sortcolumn="0" data-sortkey="0-0">#</th>
+            <th class="nosort" data-sortcolumn="1" data-sortkey="1-0">Fixture</th>
+            <th class="nosort" data-sortcolumn="2" data-sortkey="2-0">Test Name</th>
+            <th class="nosort" data-sortcolumn="3" data-sortkey="3-0">Browsers</th>
+            <th class="nosort" data-sortcolumn="4" data-sortkey="4-0">Duration</th>
+            <th class="nosort" data-sortcolumn="5" data-sortkey="5-0">Result</th>
           </tr>
         </thead>
         <tbody>
            <tr class="success">
-  <td>1</td>
-  <td>First fixture</td>
-  <td>First test in first fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td>passed</td>
+  <td data-value="1">1</td>
+  <td data-value="First fixture">First fixture</td>
+  <td data-value="First test in first fixture">First test in first fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="passed">passed</td>
  </tr>
  <tr class="danger">
-  <td>2</td>
-  <td>First fixture</td>
-  <td>Second test in first fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td><a href="#test-2">failed</a></td>
+  <td data-value="2">2</td>
+  <td data-value="First fixture">First fixture</td>
+  <td data-value="Second test in first fixture">Second test in first fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="failed"><a href="#test-2">failed</a></td>
  </tr>
  <tr class="success">
-  <td>3</td>
-  <td>First fixture</td>
-  <td>Third test in first fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td>passed</td>
+  <td data-value="3">3</td>
+  <td data-value="First fixture">First fixture</td>
+  <td data-value="Third test in first fixture">Third test in first fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="passed">passed</td>
  </tr>
  <tr class="success">
-  <td>4</td>
-  <td>Second fixture</td>
-  <td>First test in second fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td>passed</td>
+  <td data-value="4">4</td>
+  <td data-value="Second fixture">Second fixture</td>
+  <td data-value="First test in second fixture">First test in second fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="passed">passed</td>
  </tr>
  <tr class="success">
-  <td>5</td>
-  <td>Second fixture</td>
-  <td>Second test in second fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td>passed</td>
+  <td data-value="5">5</td>
+  <td data-value="Second fixture">Second fixture</td>
+  <td data-value="Second test in second fixture">Second test in second fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="passed">passed</td>
  </tr>
  <tr class="success">
-  <td>6</td>
-  <td>Second fixture</td>
-  <td>Third test in second fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>0s</td>
-  <td>passed</td>
+  <td data-value="6">6</td>
+  <td data-value="Second fixture">Second fixture</td>
+  <td data-value="Third test in second fixture">Third test in second fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="0s">0s</td>
+  <td data-value="passed">passed</td>
  </tr>
  <tr class="danger">
-  <td>7</td>
-  <td>Third fixture</td>
-  <td>First test in third fixture</td>
-  <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
-  <td><a href="#test-7">failed</a></td>
+  <td data-value="7">7</td>
+  <td data-value="Third fixture">Third fixture</td>
+  <td data-value="First test in third fixture">First test in third fixture</td>
+  <td data-value="Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1">Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
+  <td data-value="1m 14s">1m 14s</td>
+  <td data-value="failed"><a href="#test-7">failed</a></td>
  </tr>
 
         </tbody>
       </table>
-      <br><br>
-      
-      <h3>Error Details</h3>
       <br>
-       <h4 id="test-2">2. First fixture - Second test in first fixture</h4>
- <pre>undefinedA JavaScript error occurred on &quot;http://example.org&quot;.
+
+      <h3>Error Details</h3>
+
+       <h4 id="test-2" style="color: red;">2. First fixture - Second test in first fixture</h4>
+ <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedA JavaScript error occurred on "http://example.org".
 Repeat test actions in the browser and check the console for errors.
-If you see this error, it means that the tested website caused it. You can fix it or disable tracking JavaScript errors in TestCafe. To do the latter, enable the &quot;--skip-js-errors&quot; option.
+If you see this error, it means that the tested website caused it. You can fix it or disable tracking JavaScript errors in TestCafe. To do the latter, enable the "--skip-js-errors" option.
 If this error does not occur, please write a new issue at:
-&quot;https://github.com/DevExpress/testcafe/issues/new?template=bug-report.md&quot;.
+"https://github.com/DevExpress/testcafe/issues/new?template=bug-report.md".
 
 JavaScript error details:
 Some error
 
 Browser: Chrome 41.0.2227 / Mac OS X 10.10.1
-Screenshot: /screenshots/1445437598847/errors </pre> <pre>undefinedThe specified selector does not match any element in the DOM tree.
+Screenshot: /screenshots/1445437598847/errors </pre><br> <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedThe specified selector does not match any element in the DOM tree.
 
-Browser: Firefox 47 / Mac OS X 10.10.1 </pre> <h4 id="test-7">7. Third fixture - First test in third fixture</h4>
- <pre>undefinedThe specified selector does not match any element in the DOM tree.
+Browser: Firefox 47 / Mac OS X 10.10.1 </pre><br> <h4 id="test-7" style="color: red;">7. Third fixture - First test in third fixture</h4>
+ <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedThe specified selector does not match any element in the DOM tree.
 
 Browser: Firefox 47 / Mac OS X 10.10.1 </pre>
     </div>
@@ -183,10 +177,11 @@ Browser: Firefox 47 / Mac OS X 10.10.1 </pre>
           modalImage.src = this.src;
         }
       });
-      
+
       document.getElementsByClassName("closeModal")[0].onclick = function() {
         modal.style.display = "none";
       }
     </script>
-  </body>
-</html>
+
+
+</body></html>
