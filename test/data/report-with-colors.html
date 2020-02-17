@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,9 +71,8 @@
     <div class="container">
 
       <h1 class="text-primary">TestCafe Test Summary</h1>
-      <br>
       <div class="client-logo" style="padding:15px"></div>
-      <div class="bg-primary" style="padding:15px">
+      <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <h3>Summary</h3><br>
         <p class="lead">Start Time: 1/1/1970 0:0:0</p>
         <p class="lead">Browsers: Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</p>
@@ -80,7 +80,7 @@
         <p class="lead">Tests Failed: 2 out of 6</p>
         <p class="lead">Tests Skipped: 0</p>
       </div><br>
-      <table class="table sortable">
+      <table class="table sortable" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <thead>
           <tr>
             <th>#</th>
@@ -150,13 +150,21 @@
  </tr>
 
         </tbody>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
       </table>
-      <br><br>
-      
-      <h3>Error Details</h3>
       <br>
-       <h4 id="test-2">2. First fixture - Second test in first fixture</h4>
- <pre>undefinedA JavaScript error occurred on &quot;http://example.org&quot;.
+      <h3>Error Details</h3>
+       <h4 id="test-2" style="color: red;">2. First fixture - Second test in first fixture</h4>
+ <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedA JavaScript error occurred on &quot;http://example.org&quot;.
 Repeat test actions in the browser and check the console for errors.
 If you see this error, it means that the tested website caused it. You can fix it or disable tracking JavaScript errors in TestCafe. To do the latter, enable the &quot;--skip-js-errors&quot; option.
 If this error does not occur, please write a new issue at:
@@ -166,12 +174,12 @@ JavaScript error details:
 Some error
 
 Browser: Chrome 41.0.2227 / Mac OS X 10.10.1
-Screenshot: /screenshots/1445437598847/errors </pre> <pre>undefinedThe specified selector does not match any element in the DOM tree.
+Screenshot: /screenshots/1445437598847/errors </pre><br> <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedThe specified selector does not match any element in the DOM tree.
 
-Browser: Firefox 47 / Mac OS X 10.10.1 </pre> <h4 id="test-7">7. Third fixture - First test in third fixture</h4>
- <pre>undefinedThe specified selector does not match any element in the DOM tree.
+Browser: Firefox 47 / Mac OS X 10.10.1 </pre><br> <h4 id="test-7" style="color: red;">7. Third fixture - First test in third fixture</h4>
+ <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedThe specified selector does not match any element in the DOM tree.
 
-Browser: Firefox 47 / Mac OS X 10.10.1 </pre>
+Browser: Firefox 47 / Mac OS X 10.10.1 </pre><br>
     </div>
     <script>
       const modal = document.getElementById('myModal');
@@ -183,10 +191,11 @@ Browser: Firefox 47 / Mac OS X 10.10.1 </pre>
           modalImage.src = this.src;
         }
       });
-      
+
       document.getElementsByClassName("closeModal")[0].onclick = function() {
         modal.style.display = "none";
       }
     </script>
   </body>
+  <br>
 </html>
