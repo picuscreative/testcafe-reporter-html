@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-html",
-  "version": "1.4.5",
+  "version": "1.4.7",
   "description": "The HTML reporter for TestCafe",
   "keywords": [
     "testcafe",
@@ -62,7 +62,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged --no-verify"
+      "pre-commit": "lint-staged"
     }
   }
 }

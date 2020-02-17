@@ -1,6 +1,22 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.4.7](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.4.5...v1.4.7) (2020-02-17)
+
+
+### Bug Fixes
+
+* **dependencies:** move test dependencies to devDependencies ([e953d03](https://github.com/picuscreative/testcafe-reporter-html/commit/e953d03e51cafb38786c6b479115111cef6fa8f3))
+* high vulnerability from audit, updated husky ([5065998](https://github.com/picuscreative/testcafe-reporter-html/commit/50659988e5dc2bf2c0cd7dedf59a753c588c8fea))
+
+### [1.4.6](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.4.5...v1.4.6) (2020-02-17)
+
+
+### Bug Fixes
+
+* **dependencies:** move test dependencies to devDependencies ([e953d03](https://github.com/picuscreative/testcafe-reporter-html/commit/e953d03e51cafb38786c6b479115111cef6fa8f3))
+* high vulnerability from audit, updated husky ([5065998](https://github.com/picuscreative/testcafe-reporter-html/commit/50659988e5dc2bf2c0cd7dedf59a753c588c8fea))
 
 <a name="1.4.4"></a>
 ## [1.4.4](https://github.com/picuscreative/testcafe-reporter-html/compare/v1.4.3...v1.4.4) (2019-01-22)
