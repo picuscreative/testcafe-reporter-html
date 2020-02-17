@@ -186,7 +186,7 @@ module.exports = () => ({
     html += `
       <h1 class="text-primary">TestCafe Test Summary</h1>
       <div class="client-logo" style="padding:15px"></div>
-      <div class="bg-primary" style="padding:15px;box-shadow: 10px 10px 10px 10px #00000033;border-radius: 10px;">
+      <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <h3>Summary</h3><br>
         <p class="lead">Start Time: ${this.startTime}</p>
         <p class="lead">Browsers: ${this.uaList}</p>
@@ -197,7 +197,7 @@ module.exports = () => ({
 
     // Summary table
     html += `
-      <table class="table sortable" style="padding:15px;box-shadow: 10px 10px 10px 10px #00000033;border-radius: 10px;">
+      <table class="table sortable" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <thead>
           <tr>
             <th>#</th>
@@ -222,8 +222,7 @@ module.exports = () => ({
           </tr>
         </thead>
       </table>
-      <br>
-      `;
+      <br>`;
 
     // Error details
     html += `
