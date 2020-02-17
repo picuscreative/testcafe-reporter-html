@@ -19,9 +19,7 @@
   "main": "lib/index",
   "scripts": {
     "test": "cross-env NODE_ENV=test gulp build && cross-env NODE_ENV=test gulp test",
-    "lint": "eslint --fix .",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "lint": "eslint --fix ."
   },
   "standard-version": {
     "scripts": {
@@ -58,7 +56,13 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "husky": "^3.0.8",
+    "husky": "^4.2.3",
     "lint-staged": "^9.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged --no-verify"
+    }
   }
 }
