@@ -47,7 +47,12 @@ module.exports = () => ({
     this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}" style="color: red;">${heading}`);
     if (testRunInfo.screenshots) {
       testRunInfo.screenshots.forEach((screenshot) => {
-        this.report += `&nbsp;&nbsp;<img class="thumbImg" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
+        if(screenshot.screenshotPath.includes("error")) {
+          // highlight error screenshot
+          this.report += `&nbsp;&nbsp;<img class="thumbImg" style="border-color:#ff0000" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
+        }else {
+          this.report += `&nbsp;&nbsp;<img class="thumbImg" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
+        }
       });
     }
     this.report += '</h4>\n';
@@ -155,7 +160,7 @@ module.exports = () => ({
         margin: auto;
         display: block;
         width: 80%;
-        max-width: 700px;
+        max-width: 1000px;
       }
 
       .closeModal {
