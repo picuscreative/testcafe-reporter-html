@@ -188,6 +188,7 @@ module.exports = () => ({
       <div class="client-logo" style="padding:15px"></div>
       <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <h3>Summary</h3><br>
+        <p class="lead">Test Env.: ${process.env.NODE_ENV}</p>
         <p class="lead">Start Time: ${this.startTime}</p>
         <p class="lead">Browsers: ${this.uaList}</p>
         <p class="lead">Duration: ${durationStr}</p>
