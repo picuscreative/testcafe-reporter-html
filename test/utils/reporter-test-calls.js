@@ -72,6 +72,11 @@ module.exports = [
         durationMs: 74000,
         unstable: false,
         screenshotPath: '/screenshots/1445437598847',
+        screenshots: [
+          {
+            screenshotPath: 'test/data/img/err_img.png',
+          },
+        ],
       },
     ],
   },
