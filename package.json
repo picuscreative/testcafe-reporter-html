@@ -21,11 +21,6 @@
     "test": "cross-env NODE_ENV=test gulp build && cross-env NODE_ENV=test gulp test",
     "lint": "eslint --fix ."
   },
-  "standard-version": {
-    "scripts": {
-      "posttag": "git push --follow-tags origin master && npm publish"
-    }
-  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
@@ -58,11 +53,5 @@
     "eslint-plugin-import": "^2.18.2",
     "husky": "^4.2.3",
     "lint-staged": "^9.4.2"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   }
 }
