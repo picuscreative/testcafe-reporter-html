@@ -184,10 +184,6 @@ module.exports = () => ({
         transition: 0.3s;
       }
 
-      .lead {
-         font-size: 16px;
-      }
-
       .closeModal:hover,
       .closeModal:focus {
         cursor: pointer;
