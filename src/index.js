@@ -47,10 +47,10 @@ module.exports = () => ({
     this.report += this.indentString(`<h4 id="test-${this.currentTestNumber}" style="color: red;">${heading}`);
     if (testRunInfo.screenshots) {
       testRunInfo.screenshots.forEach((screenshot) => {
-        if(screenshot.screenshotPath.includes("error")) {
+        if (screenshot.screenshotPath.includes('error')) {
           // highlight error screenshot
           this.report += `&nbsp;&nbsp;<img class="thumbImg" style="border-color:#ff0000" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
-        }else {
+        } else {
           this.report += `&nbsp;&nbsp;<img class="thumbImg" src="data:image/png;base64, ${fs.readFileSync(screenshot.screenshotPath, { encoding: 'base64' })}"/>`;
         }
       });
@@ -103,8 +103,19 @@ module.exports = () => ({
     } else {
       this.tableReports += result;
     }
-
     this.tableReports += '</td>\n';
+
+    // SingleTest Url
+    this.tableReports += this.indentString('<td>', 2);
+    if(process.env.JENKINS_SINGLE_TEST_BUILD_URL) {
+      const buildUrl = encodeURI(`${process.env.JENKINS_SINGLE_TEST_BUILD_URL}&test=${name}`);
+      console.log(buildUrl)
+      this.tableReports += `<a href="${buildUrl}">Build<a>`;
+    }else {
+      this.tableReports += 'NA';
+    }
+    this.tableReports += '</td>\n';
+
 
     this.tableReports += this.indentString('</tr>\n');
   },
@@ -173,6 +184,10 @@ module.exports = () => ({
         transition: 0.3s;
       }
 
+      .lead {
+         font-size: 16px;
+      }
+
       .closeModal:hover,
       .closeModal:focus {
         cursor: pointer;
@@ -192,18 +207,18 @@ module.exports = () => ({
       <h1 class="text-primary">TestCafe Test Summary</h1>
       <div class="client-logo" style="padding:15px"></div>
       <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
-        <h3>Summary</h3><br>
+        <h4>Summary</h4><br>
         <p class="lead">Start Time: ${this.startTime}</p>
         <p class="lead">Browsers: ${this.uaList}</p>
         <p class="lead">Duration: ${durationStr}</p>
         <p class="lead">Tests Failed: ${failed} out of ${this.testCount}</p>
-        <p class="lead">Tests Skipped: ${this.skipped}</p>`
+        <p class="lead">Tests Skipped: ${this.skipped}</p>`;
 
     // extra information
-    if(process.env.html_report_extra) {
+    if (process.env.html_report_extra) {
       html += `<p class="lead">Extra: ${process.env.html_report_extra}</p>`;
     }
-    html += "</div><br>";
+    html += '</div><br>';
 
     // Summary table
     html += `
@@ -216,6 +231,7 @@ module.exports = () => ({
             <th>Browsers</th>
             <th>Duration</th>
             <th>Result</th>
+            <th>Single Test</th>
           </tr>
         </thead>
         <tbody>
@@ -223,6 +239,7 @@ module.exports = () => ({
         </tbody>
         <thead>
           <tr>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
