@@ -25,7 +25,7 @@ module.exports = () => ({
     this.currentFixtureName = name;
   },
 
-  reportTestDone: function reportTestDone(name, testRunInfo) {
+  reportTestDone: function reportTestDone(name, testRunInfo, meta) {
     const hasErr = !!testRunInfo.errs.length;
     const result = hasErr ? 'failed' : 'passed';
 
@@ -33,7 +33,7 @@ module.exports = () => ({
       this.skipped += 1;
     }
 
-    this.compileTestTable(name, testRunInfo, hasErr, result);
+    this.compileTestTable(name, testRunInfo, meta, hasErr, result);
     if (hasErr) {
       this.compileErrors(name, testRunInfo);
     }
@@ -63,7 +63,7 @@ module.exports = () => ({
     });
   },
 
-  compileTestTable: function compileTestTable(name, testRunInfo, hasErr, result) {
+  compileTestTable: function compileTestTable(name, testRunInfo, meta, hasErr, result) {
     if (hasErr) {
       this.tableReports += this.indentString('<tr class="danger">\n');
     } else if (testRunInfo.skipped) {
@@ -86,9 +86,13 @@ module.exports = () => ({
     this.tableReports += name;
     this.tableReports += '</td>\n';
     // Browsers
-    this.tableReports += this.indentString('<td>', 2);
-    this.tableReports += this.uaList;
-    this.tableReports += '</td>\n';
+    this.tableReports += this.indentString('<td><div class="testDesc">', 2);
+    if(meta.description) {
+      this.tableReports += meta.description;
+    }else {
+      this.tableReports += "No description"
+    }
+    this.tableReports += '</div></td>\n';
 
     // Duration
     this.tableReports += this.indentString('<td>', 2);
@@ -174,6 +178,12 @@ module.exports = () => ({
         max-width: 1000px;
       }
 
+      .testDesc {
+        width: 300px;
+        position: relative;
+        word-break: break-all;
+      }
+
       .closeModal {
         position: absolute;
         top: 15px;
@@ -224,7 +234,7 @@ module.exports = () => ({
             <th>#</th>
             <th>Fixture</th>
             <th>Test Name</th>
-            <th>Browsers</th>
+            <th>Description</th>
             <th>Duration</th>
             <th>Result</th>
             <th>Single Test</th>
