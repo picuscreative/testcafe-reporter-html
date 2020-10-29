@@ -155,7 +155,7 @@ module.exports = () => ({
         margin: auto;
         display: block;
         width: 80%;
-        max-width: 700px;
+        max-width: 75%;
       }
 
       .closeModal {
