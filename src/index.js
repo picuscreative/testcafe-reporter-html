@@ -77,7 +77,7 @@ module.exports = () => ({
     this.tableReports += this.currentFixtureName;
     this.tableReports += '</td>\n';
     // Test
-    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.indentString('<td class="test-name">', 2);
     this.tableReports += name;
     this.tableReports += '</td>\n';
     // Browsers
@@ -171,6 +171,10 @@ module.exports = () => ({
       .closeModal:hover,
       .closeModal:focus {
         cursor: pointer;
+      }
+
+      .test-name {
+        white-space: pre;
       }
     </style>
   </head>
