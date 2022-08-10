@@ -112,7 +112,7 @@ module.exports = () => ({
     // SingleTest Url
     this.tableReports += this.indentString('<td>', 2);
     if(process.env.JENKINS_SINGLE_TEST_BUILD_URL) {
-      const buildUrl = encodeURI(`${process.env.JENKINS_SINGLE_TEST_BUILD_URL}&test=${name}`);
+      const buildUrl = encodeURI(`${process.env.JENKINS_SINGLE_TEST_BUILD_URL}&${process.env.JENKINS_SINGLE_TEST_PARAMETER_NAME}=${name}`);
       console.log(buildUrl)
       this.tableReports += `<a href="${buildUrl}">Build<a>`;
     }else {
