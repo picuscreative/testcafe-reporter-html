@@ -1,6 +1,10 @@
-const { TestRunErrorFormattableAdapter } = require('testcafe').embeddingUtils;
-const { UncaughtErrorOnPage } = require('testcafe').embeddingUtils.testRunErrors;
-const { ActionElementNotFoundError } = require('testcafe').embeddingUtils.testRunErrors;
+const { TestRunErrorFormattableAdapter } = require('testcafe/lib/embedding-utils');
+const {
+  ActionElementNotFoundError,
+  UncaughtErrorOnPage,
+} = require('testcafe/lib/shared/errors');
+
+
 const testCallsite = require('./test-callsite');
 
 function makeErrors(errDescrs) {
@@ -35,7 +39,7 @@ module.exports = [
       'First test in first fixture',
       {
         errs: [],
-        durationMs: 74000,
+        durationMs: 54000,
         unstable: true,
         screenshotPath: '/screenshots/1445437598847',
       },
@@ -69,7 +73,7 @@ module.exports = [
           },
         ]),
 
-        durationMs: 74000,
+        durationMs: 148000,
         unstable: false,
         screenshotPath: '/screenshots/1445437598847',
       },
@@ -81,7 +85,7 @@ module.exports = [
       'Third test in first fixture',
       {
         errs: [],
-        durationMs: 74000,
+        durationMs: 71000,
         unstable: false,
         screenshotPath: null,
       },
@@ -100,7 +104,7 @@ module.exports = [
       'First test in second fixture',
       {
         errs: [],
-        durationMs: 74000,
+        durationMs: 23000,
         unstable: false,
         screenshotPath: null,
       },
@@ -112,7 +116,7 @@ module.exports = [
       'Second test in second fixture',
       {
         errs: [],
-        durationMs: 74000,
+        durationMs: 81000,
         unstable: false,
         screenshotPath: null,
       },
@@ -168,8 +172,8 @@ module.exports = [
       4,
       [
         'Was unable to take screenshots because the screenshot directory is not specified. '
-          + 'To specify it, use the "-s" or "--screenshots" command line option or the '
-          + '"screenshots" method of the test runner in case you are using API.',
+        + 'To specify it, use the "-s" or "--screenshots" command line option or the '
+        + '"screenshots" method of the test runner in case you are using API.',
       ],
     ],
   },

@@ -1,0 +1,19 @@
+name: Run TestCafe tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    name: Install Node and launch TestCafe tests in Chrome
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: lts
+      - uses: actions/checkout@v1
+      - name: Run TestCafe Tests
+        uses: DevExpress/testcafe-action@latest
+        with:
+          args: chrome test/functional

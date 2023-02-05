@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -97,7 +96,7 @@
   <td>First fixture</td>
   <td>First test in first fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="54000">54s</td>
   <td>passed</td>
  </tr>
  <tr class="danger">
@@ -105,7 +104,7 @@
   <td>First fixture</td>
   <td>Second test in first fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="148000">2m 28s</td>
   <td><a href="#test-2">failed</a></td>
  </tr>
  <tr class="success">
@@ -113,7 +112,7 @@
   <td>First fixture</td>
   <td>Third test in first fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="71000">1m 11s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -121,7 +120,7 @@
   <td>Second fixture</td>
   <td>First test in second fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="23000">23s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -129,7 +128,7 @@
   <td>Second fixture</td>
   <td>Second test in second fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="81000">1m 21s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -137,7 +136,7 @@
   <td>Second fixture</td>
   <td>Third test in second fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>0s</td>
+  <td data-value="0">0s</td>
   <td>passed</td>
  </tr>
  <tr class="danger">
@@ -145,7 +144,7 @@
   <td>Third fixture</td>
   <td>First test in third fixture</td>
   <td>Chrome 41.0.2227 / Mac OS X 10.10.1, Firefox 47 / Mac OS X 10.10.1</td>
-  <td>1m 14s</td>
+  <td data-value="74000">1m 14s</td>
   <td><a href="#test-7">failed</a></td>
  </tr>
 
@@ -166,8 +165,8 @@
        <h4 id="test-2" style="color: red;">2. First fixture - Second test in first fixture</h4>
  <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">undefinedA JavaScript error occurred on &quot;http://example.org&quot;.
 Repeat test actions in the browser and check the console for errors.
-If you see this error, it means that the tested website caused it. You can fix it or disable tracking JavaScript errors in TestCafe. To do the latter, enable the &quot;--skip-js-errors&quot; option.
-If this error does not occur, please write a new issue at:
+Enable the “skipJsErrors” option to ignore JavaScript errors during test execution. Learn more: &quot;https://testcafe.io/documentation/404038/recipes/debugging/skip-javascript-errors&quot;
+If the website only throws this error when you test it with TestCafe, please create a new issue at:
 &quot;https://github.com/DevExpress/testcafe/issues/new?template=bug-report.md&quot;.
 
 JavaScript error details:
