@@ -1,10 +1,12 @@
 /* eslint global-require: 0 */
 /* eslint import/no-unresolved: 0 */
+/* eslint import/no-extraneous-dependencies: 0 */
 
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const del = require('del');
+const childProcess = require('child_process');
 
 gulp.task('clean', (cb) => del('lib', cb));
 
@@ -17,16 +19,28 @@ gulp.task('build', gulp.series(['clean'], () => gulp
   )
   .pipe(gulp.dest('lib'))));
 
-gulp.task('test', () => {
-  process.env.NODE_ENV = 'test';
-  return gulp.src('test/**.js').pipe(
-    mocha({
-      ui: 'bdd',
-      reporter: 'spec',
-      timeout: typeof v8debug === 'undefined' ? 2000 : Infinity, // NOTE: disable timeouts in debug
-    }),
-  );
+gulp.task('test-functional', (done) => {
+  childProcess.execSync('npx testcafe chrome test/functional', {
+    shell: true,
+    stdio: 'inherit',
+  });
+
+  done();
 });
+
+gulp.task('test-unit', () => {
+  process.env.NODE_ENV = 'test';
+  return gulp.src('test/unit/**.js')
+    .pipe(
+      mocha({
+        ui: 'bdd',
+        reporter: 'spec',
+        timeout: typeof v8debug === 'undefined' ? 2000 : Infinity, // NOTE: disable timeouts in debug
+      }),
+    );
+});
+
+gulp.task('test', gulp.series('test-unit', 'test-functional'));
 
 gulp.task('preview', () => {
   const { buildReporterPlugin } = require('testcafe').embeddingUtils;

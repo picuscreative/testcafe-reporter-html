@@ -1,7 +1,7 @@
 /* eslint global-require: 0 */
 /* eslint import/no-unresolved: 0 */
 
-const { buildReporterPlugin } = require('testcafe').embeddingUtils;
+const { buildReporterPlugin } = require('testcafe/lib/embedding-utils');
 const pluginFactory = require('../../lib');
 const reporterTestCalls = require('./reporter-test-calls');
 

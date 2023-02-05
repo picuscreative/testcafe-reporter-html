@@ -86,7 +86,7 @@ module.exports = () => ({
     this.tableReports += '</td>\n';
 
     // Duration
-    this.tableReports += this.indentString('<td>', 2);
+    this.tableReports += this.indentString(`<td data-value="${testRunInfo.durationMs}">`, 2);
     this.tableReports += this.moment.duration(testRunInfo.durationMs).format('h[h] mm[m] ss[s]');
     this.tableReports += '</td>\n';
     // Result
